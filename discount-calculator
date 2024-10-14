@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval';">
+<title>Discount Calculator</title>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input {
+            margin-bottom: 10px;
+        }
+</style>
+</head>
+<body>
+<h1>Discount Calculator</h1>
+<label for="amount">Original Price ($):</label>
+<input type="number" id="amount" placeholder="Enter dollar amount">
+ 
+    <label for="percent">Discount (%):</label>
+<input type="number" id="percent" placeholder="Enter discount percentage">
+ 
+    <button onclick="calculateDiscount()">Calculate</button>
+ 
+    <h2>Results</h2>
+<p>Discount Amount: $<span id="discount"></span></p>
+<p>New Price: $<span id="newprice"></span></p>
+ 
+    <script>
+        function calculateDiscount() {
+            // Get the input values
+            var amount = parseFloat(document.getElementById('amount').value);
+            var percent = parseFloat(document.getElementById('percent').value);
+ 
+            // Check if the inputs are valid numbers
+            if (!isNaN(amount) && !isNaN(percent)) {
+                // Calculate the discount and new price
+                var discount = amount * (percent / 100);
+                var newPrice = amount - discount;
+ 
+                // Display the results
+                document.getElementById('discount').textContent = discount.toFixed(2);
+                document.getElementById('newprice').textContent = newPrice.toFixed(2);
+            } else {
+                alert('Please enter valid numbers for both the amount and the discount percentage.');
+            }
+        }
+</script>
+</body>
+</html>
